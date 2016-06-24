@@ -7,7 +7,7 @@ Utilizes OS notify system.
 
 requirements:
 
-* node
+* [nodejs](https://nodejs.org/en/)
 
 installation:
 
