@@ -1,0 +1,26 @@
+[
+    {
+        "currentPercent": 0,
+        "currentPrice": 0,
+        "minimumPercent": -50,
+        "minimumPrice": 0,
+        "title": "Game name",
+        "url": "http://store.steampowered.com/sub/777/"
+    },
+    {
+        "currentPercent": 0,
+        "currentPrice": 0,
+        "minimumPercent": -50,
+        "minimumPrice": 0,
+        "title": "Game name",
+        "url": "http://store.steampowered.com/sub/777/"
+    },
+    {
+        "currentPercent": 0,
+        "currentPrice": 0,
+        "minimumPercent": -50,
+        "minimumPrice": 0,
+        "title": "Game name",
+        "url": "http://store.steampowered.com/sub/777/"
+    },
+]
