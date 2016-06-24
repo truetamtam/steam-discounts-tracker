@@ -2,17 +2,18 @@ var gulp = require('gulp');
 var notifier = require('node-notifier');
 var jsdom = require('jsdom');
 var jf = require('jsonfile');
+var gutil = require('gulp-util');
 
 var games = jf.readFileSync("watch/games.json");
 
 
 gulp.task("watch", function () {
     observe();
-    setInterval(observe, 30000);
+    setInterval(observe, eachMinutes(5));
 });
 
 function observe() {
-    console.log('Check all games pages.');
+    gutil.log('Check all games pages.');
     games.forEach(function(game) {
         checkGamePage(game);
     });
@@ -34,15 +35,19 @@ function checkGamePage(game) {
 }
 
 function checkGamePercent(game) {
-    console.log('Check game page: ' + game.title);
+    gutil.log('Check game page: ' + game.title);
     if(game.currentPercent < game.minimumPercent) {
         notifier.notify({
           title: game.title,
           message: "Скидка: " + game.currentPercent + "%"
         });
     }
-    console.log('Minimum percent: ' + game.minimumPercent);
-    console.log('Current percent: ' + game.currentPercent);
+    gutil.log('Minimum percent: ' + game.minimumPercent);
+    gutil.log('Current percent: ' + game.currentPercent);
+}
+
+function eachMinutes(minutes) {
+    return 1000 * 60 * minutes;
 }
 
 gulp.task('default', ['watch']);
