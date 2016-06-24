@@ -35,15 +35,15 @@ function checkGamePage(game) {
 }
 
 function checkGamePercent(game) {
-    gutil.log('Check game page: ' + game.title);
+    gutil.log(gutil.colors.yellow('Check game page: ' + game.title));
     if(game.currentPercent < game.minimumPercent) {
         notifier.notify({
           title: game.title,
           message: "Скидка: " + game.currentPercent + "%"
         });
     }
-    gutil.log('Minimum percent: ' + game.minimumPercent);
-    gutil.log('Current percent: ' + game.currentPercent);
+    gutil.log('Minimum percent: ' + gutil.colors.blue(game.minimumPercent));
+    gutil.log('Current percent: ' + gutil.colors.green(game.currentPercent));
 }
 
 function eachMinutes(minutes) {
