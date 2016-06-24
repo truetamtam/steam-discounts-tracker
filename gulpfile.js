@@ -3,13 +3,18 @@ var notifier = require('node-notifier');
 var jsdom = require('jsdom');
 var jf = require('jsonfile');
 var gutil = require('gulp-util');
+var argv = require('yargs')
+    .default('each', 1)
+    .argv;
 
 var games = jf.readFileSync("watch/games.json");
 
 
+init();
+
 gulp.task("watch", function () {
     observe();
-    setInterval(observe, eachMinutes(5));
+    setInterval(observe, eachMinutes(argv.each));
 });
 
 function observe() {
@@ -50,4 +55,16 @@ function eachMinutes(minutes) {
     return 1000 * 60 * minutes;
 }
 
+function init() {
+    if(argv.each < 1) {
+      gutil.log('Argument "each minutes" must be more than 1');
+      process.exit();
+    }
+}
+
 gulp.task('default', ['watch']);
+
+gulp.task('help', function() {
+    console.log('arguments:');
+    console.log('--each=[int]');
+});
